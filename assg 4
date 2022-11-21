@@ -1,0 +1,125 @@
+#include <stdio.h>
+#include<stdlib.h>
+#define SIZE 5
+
+void enqueue();
+void dequeue();
+void show();
+void peek();
+void isEmpty();
+void isFull();
+
+int Queue[SIZE];
+int Rear= -1;
+int Front= -1;
+
+int main()
+{
+    int ch;
+    while (1)
+    {
+    	printf("1.Enqueue Operation\n");
+        printf("2.Dequeue Operation\n");
+        printf("3.Display the Queue\n");
+        printf("4.Peek at the Queue\n");
+        printf("5.Check if the Queue is empty\n");
+        printf("6.Check if the Queue is full\n");
+        printf("7.Exit\n");
+        printf("Enter your choice of operations : ");
+        scanf("%d", &ch);
+        switch (ch)
+        {
+            case 1:
+            enqueue();
+            break;
+            case 2:
+            dequeue();
+            break;
+            case 3:
+            show();
+            case 4:
+            peek();
+            case 5:
+            isEmpty();
+            break;
+            case 6:
+            isFull();
+            case 7:
+            exit(0);
+            default:
+            printf("Incorrect choice \n");
+        } 
+    } 
+} 
+ 
+void enqueue()
+{
+    int insert_item;
+    if (Rear == SIZE - 1)
+       printf("Overflow \n");
+    else
+    {
+        if (Front == - 1)
+      
+        Front = 0;
+        printf("Element to be inserted in the Queue\n : ");
+        scanf("%d", &insert_item);
+        Rear = Rear + 1;
+        Queue[Rear] = insert_item;
+    }
+} 
+ 
+void dequeue()
+{
+    if (Front == - 1 || Front > Rear)
+    {
+        printf("Underflow \n");
+        return ;
+    }
+    else
+    {
+        printf("Element deleted from the Queue: %d\n", Queue[Front]);
+        Front = Front + 1;
+    }
+} 
+ 
+void show()
+{
+    
+    if (Front == - 1)
+        printf("Empty Queue \n");
+    else
+    {
+        printf("Queue: \n");
+        for (int i = Front; i <= Rear; i++)
+            printf("%d ", Queue[i]);
+        printf("\n");
+    }
+} 
+
+void peek(){
+	 if (Front == - 1)
+        printf("Empty Queue \n");
+    else
+    {
+        printf("Queue's First Element': ");
+        printf("%d\n", Queue[Front]);
+    }
+}
+
+void isEmpty(){
+	if (Front == - 1)
+        printf("Empty Queue \n");
+    else
+    {
+    	printf("Queue is not empty\n");
+    }
+}
+
+void isFull(){
+	if(Rear==SIZE-1){
+		printf("Queue is full");
+	}else{
+		printf("Stack is not full");
+	}
+}
